@@ -1,0 +1,120 @@
+{% extends 'base_app/base.html' %}
+{% load static %}
+{% block title %} index.html {% endblock title %}
+
+{% block body %}
+{% block cssfile %}
+<link rel="stylesheet" href="{% static 'base_app/cssfile/index.css' %}">
+
+
+{% endblock cssfile %}
+
+
+
+
+
+<div class="container">
+    <div class="row">
+
+        <div id="ris_card_col" class="col-12 my-3 col-md-7 ">
+
+
+            <div id="post" class=" my-3">
+                <div class="row">
+                    <div class="col-2 ">
+                        <img src="/media/images/LogoMakr-86AOnX.png" class="img-thumbnail" alt="image">
+                    </div>
+                    <div class="col-10">
+                        <button id="rispost" type="button" class="mw-100 postbutton "> what's on your mind {{name}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="ris_container" style="height: 500px;" class="  ">
+                <div class="card border-success mb-3 mx-auto" style="max-width: 40rem;">
+                    <div class="card-header bg-transparent border-success">Nayra</div>
+                    <h6 id="postheading" class="mx-3"> post</h6>
+                    <div class="card-body text-success">
+                        <img src="https://source.unsplash.com/1400x600/?people" style="width: 100%; height:350px;"
+                            class="img-fluid " alt="image">
+                    </div>
+                    <div class="card-footer bg-transparent border-success">
+                        <div class="d-flex justify-content-around"><a href="#"><i class="fa fa-thumbs-up"></i>
+                            </a> <a href="#"><i class="fa fa-heart"></i></i></a> </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div id="ris_side" class="col-md-5  my-3 d-none d-md-block">
+            <div class="card ris_fixed_div" id="" style="width: 18rem;">
+                <img src="https://source.unsplash.com/WLUHO9A_xik/200x200 " class="card-img-top" alt="#">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                        the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="bg-modal-post">
+    <div class="model-content-post">
+        <div class="close-post">+</div>
+        <div id="rispostForm-post">
+            <form action="/userpost/" method="post" enctype="multipart/form-data" novalidate>
+
+                {% csrf_token %}
+                {% if userpost.non_field_errors %}
+                {% for error in userpost.non_field_errors %}
+                <span id="nonfielderrors">{{error}}</span>
+                {% endfor %}
+                {% endif %}
+
+                <div class="row mb-3">
+                    {% for field in userpost %}
+                    <div class="col-sm-10 my-2 ">
+                        {{ field }} {{field.errors}}
+                    </div>
+
+
+                    {% endfor %}
+                </div>
+
+
+                <button id="rispop" type="submit" class="btn btn-outline-success my-3">
+                    Post
+                </button>
+
+            </form>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+{% endblock body %}
+{% block jsfile %}
+{% static 'base_app/jsfile/index.js' %}
+{% endblock jsfile %}

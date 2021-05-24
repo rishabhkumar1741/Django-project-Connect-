@@ -1,0 +1,26 @@
+{% extends 'base_app/base.html' %}
+{% load static %}
+{% block title %} index.html {% endblock title %}
+
+{% block body %}
+
+{% block cssfile %}
+<link rel="stylesheet" href="{% static 'base_app/cssfile/premium.css' %}">
+{% endblock cssfile %}
+
+<div  id = "premium-container-first" class="container">
+    <h1 id="premium-heading">Connect Premium</h1>
+    <h3 id="premium-subheading">
+        Help support Connect and get VIP treatment, exclusive access,<br> and monthly coins.
+    </h3>
+    <button id="premium-first-button">Rs3000/year</button>
+    <button id="premium-second-button">360/Month</button>
+    <h6 id="premium-subscription">Subscriptions automatically renew</h6>
+</div>
+
+
+
+{% endblock body %}
+{% block jsfile %}
+{% static 'base_app/jsfile/premium.js' %}
+{% endblock jsfile %}

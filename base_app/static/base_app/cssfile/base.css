@@ -1,0 +1,17 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  /* background-image: linear-gradient(rgb(194, 191, 191), rgb(255, 255, 255)); */
+  padding-top: 60px;
+}
+.navbar-dark {
+  background-color: black;
+}
+.dropdown-menu {
+  background-color: #000000;
+}
+.dropdown-item {
+  color: white;
+}

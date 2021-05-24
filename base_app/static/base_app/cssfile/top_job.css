@@ -1,0 +1,13 @@
+#ris-container{
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+   
+    justify-content: space-between;
+}
+#ris-heading{
+    text-align: center;
+}
+#country{
+    display: inline;
+}

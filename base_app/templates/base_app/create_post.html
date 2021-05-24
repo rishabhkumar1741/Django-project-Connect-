@@ -1,0 +1,49 @@
+{% extends 'base_app/base.html' %}
+{% load static %}
+{% block title %} index.html {% endblock title %}
+
+{% block body %}
+
+{% block cssfile %}
+<link rel="stylesheet" href="{% static 'base_app/cssfile/create_post.css' %}">
+{% endblock cssfile %}
+<div id="ris_post_background">
+    <div id="create_post_container">
+        <div id="post">
+            <form id="create_post_form" action="/userpost/" method="post" enctype="multipart/form-data" novalidate>
+
+                {% csrf_token %}
+                {% if userpost.non_field_errors %}
+                {% for error in userpost.non_field_errors %}
+                <span id="nonfielderrors">{{error}}</span>
+                {% endfor %}
+                {% endif %}
+
+                <div class="row mb-3">
+                    {% for field in userpost %}
+                    <div class="col-sm-10 my-2 ">
+                        {{ field }} {{field.errors}}
+                    </div>
+
+
+                    {% endfor %}
+                </div>
+
+
+                <button id="create_post_button" type="submit" class="btn btn-outline-success my-3">
+                    Post
+                </button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock body %}
+{% block jsfile %}
+{% static 'base_app/jsfile/create_post.js' %}
+{% endblock jsfile %}
