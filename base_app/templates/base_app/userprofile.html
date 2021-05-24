@@ -1,0 +1,185 @@
+{% extends 'base_app/base.html' %}
+{% load static %}
+{% block title %} index.html {% endblock title %}
+
+{% block body %}
+
+{% block cssfile %}
+<link rel="stylesheet" href="{% static 'base_app/cssfile/userprofiles.css' %}">
+{% endblock cssfile %}
+
+<div class="profiletop">
+    <div class="container">
+        <div class="row">
+            <div class="backgroundimage">
+                <a href="{% static 'base_app/images_file/newbackground.jpg' %}">
+                    <img src="{% static 'base_app/images_file/newbackground.jpg' %}" alt="Paris">
+                </a>
+            </div>
+        </div>
+        <span class="profil_photo ">
+            <a href="{% static 'base_app/images_file/userprofile.jpeg' %}"> <img
+                    src="{% static 'base_app/images_file/userprofile.jpeg' %}" alt=""></a>
+        </span>
+        <div class="test">
+            <h1 id="display_user_name">{{name}}</h1>
+        </div>
+        <hr>
+    </div>
+</div>
+<div class="profile_body">
+    <div class="container">
+        <div class="row ">
+            <div class="col  col-md-5">
+                <div class="sticky-top">
+                    <div class="row  align-items-center justify-content-center my-3">
+                        <div class="card  sticky-top " style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title ">Intro</h5>
+                                <div class="my-3">
+                                    <button type="button" class="btn btn-outline-primary card-text info1">Edit
+                                        details</button>
+                                </div>
+                                <div class="my-3">
+                                    <button type="button" class="btn btn-outline-primary card-text info1">Add
+                                        Hobbies</button>
+                                </div>
+                                <div class="my-3">
+                                    <button type="button" class="btn btn-outline-primary card-text info1"> Edit
+                                        Featured</button>
+                                </div>
+                                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.
+                                </p> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- photo  -->
+                    <div class="row align-items-center justify-content-center my-3">
+                        <div class="card " style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Photos</h5>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- friends  -->
+                    <div class="row justify-content-center my-3">
+                        <div class="card " style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Friends</h5>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col col-md-7">
+                <div id="post" class=" rounded-3 my-3">
+                    <div class="row">
+                        <div class="col-2 ">
+                            <img src="/media/images/LogoMakr-86AOnX.png" class="img-thumbnail" alt="image">
+                        </div>
+                        <div class="col-10">
+                            <button id="rispost" type="button" class="mw-100 postbutton "> what's on your mind {{name}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                {% for data in post %}
+
+                <div class="card  border-secondary mb-3" style="max-width: 40rem;">
+                    <div class="card-header">Header</div>
+
+                    {% if data.post != None %}
+                    <div class="card-header">
+                        <h1 class="profile_post">{{data.post}}</h1>
+                    </div>
+                    {% endif %}
+
+
+
+
+                    {% if data.post_image %}
+                    <div class="card-body profile_post_list text-secondary">
+
+                        <img src="{{data.post_image.url}}" alt=" rishabh">
+
+                    </div>
+
+
+                    {% endif %}
+
+
+
+
+
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="bg-modal-post">
+    <div class="model-content-post">
+        <div class="close-post">+</div>
+        <div id="rispostForm-post">
+            <form action="/userpost/" method="post" enctype="multipart/form-data" novalidate>
+                <form>
+                    {% csrf_token %}
+                    {% if userpost.non_field_errors %}
+                    {% for error in userpost.non_field_errors %}
+                    <span id="nonfielderrors">{{error}}</span>
+                    {% endfor %}
+                    {% endif %}
+
+                    <div class="row mb-3">
+                        {% for field in userpost %}
+                        <div class="col-sm-10 my-2 ">
+                            {{ field }} {{field.errors}}
+                        </div>
+
+
+                        {% endfor %}
+                    </div>
+
+
+                    <button id="rispop" type="submit" class="btn btn-outline-success my-3">
+                        Post
+                    </button>
+
+                </form>
+            </form>
+
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+{% endblock body %}
+{% block jsfile %}
+{% static 'base_app/jsfile/userprofile.js' %}
+{% endblock jsfile %}

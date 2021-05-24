@@ -1,0 +1,33 @@
+{% extends 'base_app/base.html' %}
+{% load static %}
+{% block title %} index.html {% endblock title %}
+
+{% block body %}
+
+{% block cssfile %}
+<link rel="stylesheet" href="{% static 'base_app/cssfile/top_job.css' %}">
+{% endblock cssfile %}
+<div id="ris-heading" class="container">
+    <h1>Recommended for you</h1>
+    <h6>Based on your profile and search history</h6>
+</div>
+<div id="ris-container" class="container ">
+    <div id="job_card" class="card my-3" style="width: 18rem;">
+        <div class="card-body">
+          <h5 id="job_title" class="card-title">job title</h5>
+          <h6 id="job_Company" class="card-subtitle mb-2 text-muted">Company name</h6>
+          <p id="desption" class="card-text">DESPTION</p>
+          <h5 id="country" class="card-title">COUNTRY</h5>
+          <a id="detail_url" href="#" class="card-link">DETAIL URL</a>
+        </div>
+      </div>
+      
+      
+</div>
+
+
+
+{% endblock body %}
+{% block jsfile %}
+{% static 'base_app/jsfile/top_job.js' %}
+{% endblock jsfile %}

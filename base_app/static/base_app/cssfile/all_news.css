@@ -1,0 +1,13 @@
+#news_container{
+    display: flex;
+}
+
+
+#news_img{
+    border: 2px solid red;
+    width: 50%;
+}
+#news_text{
+    border :2px solid rgb(20, 114, 202);
+    width: 50%;
+}
